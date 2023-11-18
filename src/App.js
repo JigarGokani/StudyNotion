@@ -4,6 +4,13 @@ import Home from "./pages/Home";
 import Navbar from "./components/comman/Navbar";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
+import OpenRoute from "./components/core/Auth/OpenRoute";
+import UpdatePassword from "./pages/UpdatePassword";
+import VerifyEmail from "./pages/VerifyEmail";
+import About from "./pages/About";
+import ContactUs from "./pages/ContactUs";
+
 
 
 function App() {
@@ -14,6 +21,33 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path = "/login" element ={<Login/>}/>
         <Route path = "/signup" element ={<Signup/>}/>
+        <Route path="/forgot-password" element={<ForgotPassword />}/> 
+        <Route
+          path="update-password/:id"
+          element={
+            <OpenRoute>
+              <UpdatePassword />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="verify-email"
+          element={
+            <OpenRoute>
+              <VerifyEmail />
+            </OpenRoute>
+          }
+        />  
+        <Route
+          path="/about"
+          element={
+            
+              <About />
+            
+          }
+          />
+
+        <Route path="/contact" element={<ContactUs />} />
 
       </Routes>
     </div>
