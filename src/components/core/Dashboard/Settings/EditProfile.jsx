@@ -13,7 +13,7 @@ export default function EditProfile() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  
+
   const {
     register,
     handleSubmit,
@@ -32,7 +32,7 @@ export default function EditProfile() {
     <>
       <form onSubmit={handleSubmit(submitProfileForm)}>
         {/* Profile Information */}
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12 max-w-[75%] mx-auto">
           <h2 className="text-lg font-semibold text-richblack-5">
             Profile Information
           </h2>
@@ -182,7 +182,7 @@ export default function EditProfile() {
           </div>
         </div>
 
-        <div className="flex justify-end gap-2">
+        <div className="flex justify-end gap-2 mx-40">
           <button
             onClick={() => {
               navigate("/dashboard/my-profile")
@@ -191,7 +191,7 @@ export default function EditProfile() {
           >
             Cancel
           </button>
-          <IconBtn type="submit" text="Save" />
+          <IconBtn type="submit" text="Save"  />
         </div>
       </form>
     </>
