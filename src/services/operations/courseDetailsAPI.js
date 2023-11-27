@@ -22,6 +22,7 @@ const {
   GET_FULL_COURSE_DETAILS_AUTHENTICATED,
   CREATE_RATING_API,
   LECTURE_COMPLETION_API,
+  ADD_COURSE_TO_CATEGORY_API
 } = courseEndpoints
 
 export const getAllCourses = async () => {
@@ -387,3 +388,31 @@ export const createRating = async (data, token) => {
   toast.dismiss(toastId)
   return success
 }
+
+//add course to Category
+export const addCourseToCategory = async (data, token) => {
+  const toastId = toast.loading("Loading...");
+  let success = false;
+  try {
+    const response = await apiConnector(
+      "POST",
+      ADD_COURSE_TO_CATEGORY_API,
+      data,
+      {
+        Authorisation: `Bearer ${token}`,
+      }
+    );
+    console.log("ADD COURSE TO CATEGORY API RESPONSE............", response);
+    if (!response?.data?.success) {
+      throw new Error("Could Not Add Course To Category");
+    }
+    toast.success("Course Added To Category");
+    success = true;
+  } catch (error) {
+    success = false;
+    console.log("ADD COURSE TO CATEGORY API ERROR............", error);
+    toast.error(error.message);
+  }
+  toast.dismiss(toastId);
+  return success;
+};
